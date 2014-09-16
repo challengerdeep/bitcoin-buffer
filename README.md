@@ -21,10 +21,13 @@ utils.writeVarInt(buf, 0xffffff, 0)
 ## API
 
 ### writeUInt64LE(buf, value, offset)
+Writes in buf
 
 ### readUInt64LE(buf, offset)
+returns an integer
 
-### writeVarInt(buf, value, offset)
+### numToVarInt(value)
+returns a Buffer
 
 ### readVarInt(buf, offset)
 returns an object of this format `{ res: value, offset: offset }`

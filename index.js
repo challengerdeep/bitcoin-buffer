@@ -14,22 +14,25 @@ module.exports.readUInt64LE = function (buf, offset) {
   return n
 }
 
-module.exports.writeVarInt = function (buf, n, offset) {
-  if (!offset)
-    offset = 0
-
+module.exports.numToVarInt = function (n) {
+  var buf
   if (n < 0xfd) {
-    buf.writeUInt8(n, offset)
+    buf = new Buffer(1)
+    buf.writeUInt8(n, 0)
   } else if (n <= 0xffff) {
-    buf[offset] = 0xfd
-    buf.writeUInt16LE(n, offset + 1)
+    buf = new Buffer(3)
+    buf[0] = 0xfd
+    buf.writeUInt16LE(n, 1)
   } else if (n <= 0xffffffff) {
-    buf[offset] = 0xfe
-    buf.writeUInt32LE(n, offset + 1)
+    buf = new Buffer(5)
+    buf[0] = 0xfe
+    buf.writeUInt32LE(n, 1)
   } else {
-    buf[offset] = 0xff
-    module.exports.writeUInt64LE(buf, n, offset + 1)
+    buf = new Buffer(9)
+    buf[0] = 0xff
+    module.exports.writeUInt64LE(buf, n, 1)
   }
+  return buf
 }
 
 module.exports.readVarInt = function (buf, offset) {
