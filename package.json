@@ -1,0 +1,26 @@
+{
+  "name": "bitcoin-buffer",
+  "version": "0.1.0",
+  "description": "Buffer functions for bitcoin apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "keywords": [
+    "bitcoin",
+    "buffer",
+    "varint",
+    "writeUInt64LE",
+    "readUInt64LE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/challengerdeep/bitcoin-buffer.git"
+  },
+  "author": "Stanislas Marion <stanislas.marion@gmail.com> (http://github.com/czzarr)",
+  "license": "MIT",
+  "devDependencies": {
+    "buffer-equal": "0.0.1",
+    "tape": "^2.14.0"
+  }
+}
